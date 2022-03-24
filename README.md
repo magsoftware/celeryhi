@@ -36,14 +36,14 @@ deactivate
 ### Install, start and enable systemd service unit file (as root user)
 ```bash
 exit
-cp /home/firmware/fastgreeting/scripts/celery.service /etc/systemd/system/
+cp /home/firmware/celeryhi/scripts/celery.service /etc/systemd/system/
 chmod 644 /etc/systemd/system/celery.service
 systemctl daemon-reload
 systemctl start celery
 systemctl status celery
 systemctl enable celery
 
-cp /home/firmware/fastgreeting/scripts/celerybeat.service /etc/systemd/system/
+cp /home/firmware/celeryhi/scripts/celerybeat.service /etc/systemd/system/
 chmod 644 /etc/systemd/system/celerybeat.service
 systemctl daemon-reload
 systemctl start celerybeat
