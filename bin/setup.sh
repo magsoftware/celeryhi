@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-BASEDIR=${SCRIPTDIR}/..
+BASEDIR=$(dirname ${SCRIPTDIR})
 
 VENVDIR=$(pipenv --venv)
 APPNAME="tasks:app"
