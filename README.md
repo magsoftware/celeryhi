@@ -29,6 +29,7 @@ git clone https://github.com/magsoftware/celeryhi.git
 cd celeryhi
 pipenv shell
 pipenv install --ignore-pipfile
+bin/setup.sh
 exit
 ```
 
