@@ -8,7 +8,7 @@
 
 ## Installation instructions
 
-### Install python and git
+### Install python, git and pipenv
 ```bash
 sudo -i
 yum update -y
@@ -24,13 +24,12 @@ useradd firmware
 ### Clone Git repo, create virtual environment and install dependencies
 ```bash
 su - firmware
+pip3 install --user pipenv
 git clone https://github.com/magsoftware/celeryhi.git
 cd celeryhi
-python3 -m venv venv
-source venv/bin/activate
-./venv/bin/python -m pip install --upgrade pip
-pip install -r requirements.txt
-deactivate
+pipenv shell
+pipenv install --ignore-pipfile
+exit
 ```
 
 ### Install, start and enable systemd service unit file (as root user)
