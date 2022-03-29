@@ -3,8 +3,11 @@
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BASEDIR=$(dirname ${SCRIPTDIR})
 
-VENVDIR=$(pipenv --venv)
 APPNAME="tasks:app"
+USER=firmware
+GROUP=firmware
+
+VENVDIR=$(pipenv --venv)
 
 mkdir -p ${BASEDIR}/{log,run,etc}
 
@@ -48,8 +51,8 @@ After=network.target
 
 [Service]
 Type=forking
-User=firmware
-Group=firmware
+User=${USER}
+Group=${GROUP}
 EnvironmentFile=${BASEDIR}/etc/celery.conf
 WorkingDirectory=${BASEDIR}
 ExecStart=/bin/sh -c '\${CELERY_BIN} -A \${CELERY_APP} multi start \${CELERYD_NODES} --pidfile=\${CELERYD_PID_FILE} --logfile=\${CELERYD_LOG_FILE} --loglevel=\${CELERYD_LOG_LEVEL} \${CELERYD_OPTS}'
@@ -69,8 +72,8 @@ After=network.target
 
 [Service]
 Type=simple
-User=firmware
-Group=firmware
+User=${USER}
+Group=${GROUP}
 EnvironmentFile=${BASEDIR}/etc/celery.conf
 WorkingDirectory=${BASEDIR}
 ExecStart=/bin/sh -c '\${CELERY_BIN} -A \${CELERY_APP} beat --pidfile=\${CELERYBEAT_PID_FILE} --logfile=\${CELERYBEAT_LOG_FILE} --loglevel=\${CELERYD_LOG_LEVEL}'
