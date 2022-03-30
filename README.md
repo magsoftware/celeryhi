@@ -24,6 +24,7 @@ useradd firmware
 ### Clone Git repo, create virtual environment and install dependencies
 ```bash
 su - firmware
+python3 -m pip install --user --upgrade pip
 pip3 install --user pipenv
 git clone https://github.com/magsoftware/celeryhi.git
 cd celeryhi
